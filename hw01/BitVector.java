@@ -2,7 +2,7 @@
  * CS 2110 Fall 2021 HW1
  * Part 1 - Coding a bit vector
  *
- * @author YOUR NAME HERE
+ * @author Andrew Friedman
  *
  * Global rules for this file:
  * - You may not use multiplication, division or modulus in any method.
@@ -50,7 +50,7 @@ public class BitVector
      */
     public void set(int index)
     {
-
+        bits = (1<<index)|bits;
     }
 
     /**
@@ -61,7 +61,7 @@ public class BitVector
      */
     public void clear(int index)
     {
-
+        bits = ~(1<<index)&bits;
     }
 
     /**
@@ -73,7 +73,7 @@ public class BitVector
      */
     public void toggle(int index)
     {
-
+        bits = bits^(1<<index);
     }
 
     /**
@@ -86,7 +86,7 @@ public class BitVector
      */
     public boolean isSet(int index)
     {
-        return false;
+        return (index < 32) && ((bits&(1<<index)) == (1<<index));
     }
 
     /**
@@ -99,7 +99,7 @@ public class BitVector
      */
     public boolean isClear(int index)
     {
-        return false;
+        return (index >= 32) || ((bits&(1<<index)) == 0);
     }
 
     /**
@@ -108,7 +108,15 @@ public class BitVector
      */
     public int onesCount()
     {
-        return 0;
+        int count = 0;
+        for(int i = 0; i < 32; i++)
+        {
+            if((bits&(1<<i)) == (1<<i))
+            {
+              count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -117,7 +125,15 @@ public class BitVector
      */
     public int zerosCount()
     {
-        return 0;
+        int count = 0;
+        for(int i = 0; i < 32; i++)
+        {
+            if((bits&(1<<i)) == 0)
+            {
+              count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -129,6 +145,21 @@ public class BitVector
      */
     public int size()
     {
-        return 0;
+        int count = 0;
+        if (bits == 0)
+        {
+            return 1;
+        } else {
+            for(int i = 0; i < 32; i++)
+            {
+                if (bits == 0) {
+                    break;
+                } else {
+                    bits = bits>>1;
+                    count++;
+                }
+            }
+            return count;
+        }
     }
 }

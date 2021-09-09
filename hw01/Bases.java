@@ -2,7 +2,7 @@
  * CS 2110 Fall 2021 HW1
  * Part 2 - Coding with bases
  *
- * @author YOUR NAME HERE
+ * @author Andrew Friedman
  *
  * Global rules for this file:
  * - You may not use more than 2 conditionals per method. Conditionals are
@@ -41,9 +41,15 @@ public class Bases
      *
      * Example: binaryStringToInt("111"); // => 7
      */
-    public static int binaryStringToInt(String binary)
+     public static int binaryStringToInt(String binary)
     {
-        return 0;
+        int output = 0;
+        for (int i = 0; i < binary.length(); i++) {
+          if (binary.charAt(i) == '1') {
+            output += 1 << binary.length()-i-1;
+          }
+        }
+        return output;
     }
 
     /**
@@ -58,7 +64,12 @@ public class Bases
      */
     public static int decimalStringToInt(String decimal)
     {
-        return 0;
+        int output = 0, counter = 1;
+        for (int i = decimal.length() - 1; i > -1; i--) {
+          output += (decimal.charAt(i)-48)*counter;
+          counter *= 10;
+        }
+        return output;
     }
 
     /**
@@ -69,10 +80,15 @@ public class Bases
      *
      * Example: octalStringToInt("27"); // => 23
      */
-    public static int octalStringToInt(String octal)
-    {
-        return 0;
-    }
+     public static int octalStringToInt(String octal)
+     {
+       int output = 0, counter = 0;
+       for (int i = octal.length() - 1; i > -1; i--) {
+         output += (octal.charAt(i)-48) << counter;
+         counter += 3;
+       }
+       return output;
+     }
 
     /**
      * Convert a int into a String containing ASCII characters (in hex).
@@ -85,10 +101,30 @@ public class Bases
      *
      * You may declare one String variable in this method.
      */
-    public static String intToHexString(int hex)
-    {
-        return "";
-    }
+     public static String intToHexString(int hex)
+     {
+       String output = "";
+       int counter = 16;
+       while (counter <= hex) {
+         counter = counter << 4;
+       }
+       counter = counter >> 4;
+       int counter2 = 0;
+       while (counter != 0) {
+         if (hex < counter) {
+           if (counter2 > 9) {
+            output += (char)(counter2 + 65 - 10);
+           }else {
+            output += counter2;
+           }
+           counter = counter >> 4;
+           counter2 = 0;
+         }
+         hex -= counter;
+         counter2++;
+       }
+       return output;
+     }
 
     /**
      * Convert a String containing ASCII characters representing a number in
@@ -106,6 +142,19 @@ public class Bases
      */
     public static String binaryStringToOctalString(String binary)
     {
-        return "";
+      int decimal = 0;
+      for (int i = 0; i < binary.length(); i++) {
+        if (binary.charAt(i) == '1') {
+          decimal += 1 << binary.length()-i-1;
+        }
+      }
+
+      String output = "";
+      int counter = 21;
+      for(int i=7; i>=0; --i) {
+        output += (decimal >> counter) & 0b111;
+        counter -= 3;
+      }
+      return output;
     }
 }

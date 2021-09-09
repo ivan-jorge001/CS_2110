@@ -2,7 +2,7 @@
  * CS 2110 Fall 2021 HW1
  * Part 3 - Coding with bitwise operators
  *
- * @author YOUR NAME HERE
+ * @author Andrew Friedman
  *
  * Global rules for this file:
  * - All of these functions must be completed in ONE line. That means they
@@ -75,7 +75,7 @@ public class Operations
      */
     int getByte(int num, int which)
     {
-        return 0;
+        return (num >> (which << 3)) & 0xFF;
     }
 
     /**
@@ -107,7 +107,7 @@ public class Operations
      */
     int setNibble(int num, int a_nibble, int which)
     {
-        return 0;
+        return (~(0b1111 << (which << 2)) & num) | (a_nibble << (which << 2));
     }
 
     /**
@@ -128,7 +128,7 @@ public class Operations
      */
     int pack(int b2, int s1, int b0)
     {
-        return 0;
+        return b2<<24|s1<<8|b0;
     }
 
     /**
@@ -149,7 +149,7 @@ public class Operations
      */
     int bitRange(int num, int s, int n)
     {
-        return 0;
+        return ~(~0 << n) & (num >> s);
     }
 
     /**
@@ -168,7 +168,7 @@ public class Operations
      */
     int xor(int num1, int num2)
     {
-        return 0;
+        return (num1 | num2) & (~num1 | ~num2);
     }
 
     /**
@@ -186,7 +186,7 @@ public class Operations
 
     boolean multipleOf2(int num)
     {
-        return false;
+        return (num&1)==0;
     }
 
     /**
@@ -206,7 +206,7 @@ public class Operations
 
     boolean multipleOf16(int num)
     {
-        return false;
+        return (num&15)==0;
     }
 
     /**
@@ -225,6 +225,6 @@ public class Operations
 
     boolean powerOf2(int num)
     {
-        return false;
+        return (num&(--num))==0&&num!=-1&&num!=2147483647;
     }
 }
