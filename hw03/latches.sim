@@ -1,0 +1,290 @@
+{
+  "version": "1.8.2 2110 version",
+  "globalBitSize": 1,
+  "clockSpeed": 1,
+  "circuits": [
+    {
+      "name": "RS Latch",
+      "components": [
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 36,
+          "y": 19,
+          "properties": {
+            "Label location": "EAST",
+            "Label": "notout",
+            "Is input?": "No",
+            "Direction": "WEST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 1,
+          "properties": {
+            "Text": "Name: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 3,
+          "properties": {
+            "Text": "Date: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 10,
+          "y": 10,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "S",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 10,
+          "y": 19,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "R",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 36,
+          "y": 10,
+          "properties": {
+            "Label location": "EAST",
+            "Label": "out",
+            "Is input?": "No",
+            "Direction": "WEST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 5,
+          "properties": {
+            "Text": "Collaborators: *EDIT ME*"
+          }
+        }
+      ],
+      "wires": []
+    },
+    {
+      "name": "Gated D Latch",
+      "components": [
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 9,
+          "y": 19,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "Enable",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 1,
+          "properties": {
+            "Text": "Name: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 3,
+          "properties": {
+            "Text": "Date: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 9,
+          "y": 12,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "In",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 50,
+          "y": 10,
+          "properties": {
+            "Label location": "EAST",
+            "Label": "Out",
+            "Is input?": "No",
+            "Direction": "WEST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 5,
+          "properties": {
+            "Text": "Collaborators: *EDIT ME*"
+          }
+        }
+      ],
+      "wires": []
+    },
+    {
+      "name": "D Flip-Flop",
+      "components": [
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 10,
+          "y": 22,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "Enable",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 1,
+          "properties": {
+            "Text": "Name: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 3,
+          "properties": {
+            "Text": "Date: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 10,
+          "y": 9,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "In",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 51,
+          "y": 11,
+          "properties": {
+            "Label location": "EAST",
+            "Label": "Out",
+            "Is input?": "No",
+            "Direction": "WEST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 5,
+          "properties": {
+            "Text": "Collaborators: *EDIT ME*"
+          }
+        }
+      ],
+      "wires": []
+    },
+    {
+      "name": "Register",
+      "components": [
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 1,
+          "properties": {
+            "Text": "Name: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 3,
+          "properties": {
+            "Text": "Date: *EDIT ME*"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 11,
+          "y": 8,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "In",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "4"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 13,
+          "y": 21,
+          "properties": {
+            "Label location": "WEST",
+            "Label": "clk",
+            "Is input?": "Yes",
+            "Direction": "EAST",
+            "Bitsize": "1"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.wiring.PinPeer",
+          "x": 46,
+          "y": 8,
+          "properties": {
+            "Label location": "EAST",
+            "Label": "Out",
+            "Is input?": "No",
+            "Direction": "WEST",
+            "Bitsize": "4"
+          }
+        },
+        {
+          "name": "com.ra4king.circuitsim.gui.peers.misc.Text",
+          "x": 1,
+          "y": 5,
+          "properties": {
+            "Text": "Collaborators: *EDIT ME*"
+          }
+        }
+      ],
+      "wires": []
+    }
+  ],
+  "revisionSignatures": [
+    "CTY5YmYzMzE4MTRlNWE0NWZlN2VkZjZlMzVhMjRkZTczNjJlNDM4Mzk4NTM2YWEwZjZmZDBmYTQ0ODNlMmM0ZTIJMTU0ODA5NjMxMDMyMglhMWZhNmU1MjQ4YWNkMWRhMjQ1M2M2Mzk4MmVhYTAyZmE2YmY1MGEyY2M0Yzg3MzBlMTAzMTEzOWM0ZTJjYjY5",
+    "NjliZjMzMTgxNGU1YTQ1ZmU3ZWRmNmUzNWEyNGRlNzM2MmU0MzgzOTg1MzZhYTBmNmZkMGZhNDQ4M2UyYzRlMgkzODcxZjUzODRhMjgwZDUxZmE1NzliOTc4OWMzMzI5OTkyNDQ4ODIyZGM1M2FjZWFjNGY5Njk0NmY0NmQxODAyCTE1NDgwOTY2MDM1MzYJNDY3ZWI2ZjI2OThhZGRmZWM4NTU3Mjc0NDc2YjIyZDYwN2Q0NTMxZTA4Y2IzMWM4ZDQzZjNhYmQxOGU3NjU5Mw\u003d\u003d",
+    "Mzg3MWY1Mzg0YTI4MGQ1MWZhNTc5Yjk3ODljMzMyOTk5MjQ0ODgyMmRjNTNhY2VhYzRmOTY5NDZmNDZkMTgwMglkYjVhNDQ4MzlhMjNmYjY2OWE1NWUzYTYwYTAzYzQ5MWU1NzU5MTdkYmFjYWY3ZTM1Yzg4MzkzNWU5NmUyYTE0CTE1Njc3OTQ3MzUyNDYJODVkZWQ2NmE2MWIwYzU0ZTBmNDRiN2IwNzczZGM0YzdiNWZhZTVmOTJhNTgyYTBlZGRiZGFjM2M1NDdhOWEwZA\u003d\u003d",
+    "ZGI1YTQ0ODM5YTIzZmI2NjlhNTVlM2E2MGEwM2M0OTFlNTc1OTE3ZGJhY2FmN2UzNWM4ODM5MzVlOTZlMmExNAk4MjVkOTExOGMwNDUwODQxZTU3OTk2YmY2YzQ1YThlNWJhMmE0MmRjNjcxZTQ5NDU0Y2U5OTFmZDI0MGM1NzkxCTE1NjgxNjAxNjMwNjQJNWQ3YTg0N2ZmMGVmYmU4MzlmZmY1ODE2NzVjOWMzMDdlYTRlYjYyZjQyNzBhYTk0OWNmMmUyOTA0M2EyYTE4Mg\u003d\u003d",
+    "ODI1ZDkxMThjMDQ1MDg0MWU1Nzk5NmJmNmM0NWE4ZTViYTJhNDJkYzY3MWU0OTQ1NGNlOTkxZmQyNDBjNTc5MQlmNDk2YzE3MDZmZjQzNTFhODlhZDVkOTAxODUzMTc0NDY1MzRkNDNlZDc4MjNhNzg2MmMyZmM3ZjE0OTcyYzNhCTE2MTI5Mjc0Mjk4MzIJNWJiNDY0NmQzYmRhY2ExYjUxNmNlZmY4ZmRmYWNmMGE0MzRmM2JhNzhiNjdjZmQ2MGJlZDRiZmZlNWY4YTdhNAlDV1V3Tm1VeFkyUmxaREl5Wm1aalkySTVOamhsT0RSa1ptSmtZbVF5TVRFNE1tWmpaVE5pWXprd01ERXdZVEUzWVRGbE5tWTFZVGd4T1dGak1XVTRNbVVKTVRVME9EQTVOek13TURBek13azBNek0xT1daak9EQm1aR05rWmpjeVlUZzROelZoTVdNME5qTTVNMkZpWkdZNU1qSXlZVGMzWVRjd1pqWTFPVGd5TlRGaVpUaGxNak5tWlRNeE9XWmkJTVdSbE0yWmhPVFk1TXpKaU9UWmxPVGRoWlROaVlqYzROamN5WVRKbU1qaGpZMlpsWXpneU1XRXpZVGRrTldJM1lUY3laV05tWW1WalpESmtOVFZrTXdsaU9EUmtObVkzTUdVeE9USXlZVFJpTVdSaFpETXpZekE1WVdWaVltSmpOemxpTmpaa09HWmlNVEF6TmpRM09UUXdNekl3TmpVNU9EQTBOVEF6T1RJeUNURTFPVGt6TnpVNU16VTNNVEFKTnprMlpXWmhOV05sTUdKbFpHUTRaRFUxTVRrME1qUTJOVFE1WldFek1HUTFaVE5oT0RJMU56Sm1PV0poTXpNeFlXTmlZamt6TURCak5EYzVaVEkzTmc9PQlNV1JsTTJaaE9UWTVNekppT1RabE9UZGhaVE5pWWpjNE5qY3lZVEptTWpoalkyWmxZemd5TVdFellUZGtOV0kzWVRjeVpXTm1ZbVZqWkRKa05UVmtNd2xpT0RSa05tWTNNR1V4T1RJeVlUUmlNV1JoWkRNell6QTVZV1ZpWW1Kak56bGlOalprT0daaU1UQXpOalEzT1RRd016SXdOalU1T0RBME5UQXpPVEl5Q1RFMU9Ua3pOelU1TXpVM01UQUpOemsyWldaaE5XTmxNR0psWkdRNFpEVTFNVGswTWpRMk5UUTVaV0V6TUdRMVpUTmhPREkxTnpKbU9XSmhNek14WVdOaVlqa3pNREJqTkRjNVpUSTNOZz09"
+  ]
+}
