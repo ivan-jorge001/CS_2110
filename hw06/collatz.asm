@@ -33,11 +33,73 @@ collatz
 ;;     }
 ;; }
 
+; setup  (always the same)
+ADD R6, R6, -4    ; Allocate space
+STR R7, R6, 2     ; Save Ret Addr
+STR R5, R6, 1     ; Save Old FP
+ADD R5, R6, 0     ; Copy SP to FP
+ADD R6, R6, -5    ; Room for 5 regs
+STR R0, R5, -1
+STR R1, R5, -2
+STR R2, R5, -3
+STR R3, R5, -4
+STR R4, R5, -5
 
-;; YOUR CODE HERE
+LDR R0, R5, #4    ; Load n into R0
+ADD R0, R0, #-1   ; R0 -= 1
+BRZ     IF1       ; if n == 1
+ADD R0, R0, #1    ; R0 += 1
+AND R1, R0, #1    ; R0 &= 1
+BRZ IF2           ; if (R0 % 2 == 0) even
+BR IF3            ; if (R0 % 2 == 1) odd
 
+IF1               ; n == 1
+  AND R0, R0, #0  ; Clear R0
+  STR R0, R5, #0  ; answer = R0
+  BR TEAR         ; Branch to the tear down
+
+IF2               ; isEven case
+  ADD R6, R6, #-1 ; Push one spot on stack
+  STR R0, R6, #0  ; Push n on stack
+  JSR divideBy2   ; divideBy2(n)
+  LDR R0, R6, #0  ; Load divideBy2(n) into R0
+  ADD R6, R6, #2  ; Pop rv and arg1
+
+FINAL             ; answer = collatz(R0) + 1
+  ADD R6, R6, #-1 ; Push one spot on stack
+  STR R0, R6, #0  ; Push n on stack
+  JSR collatz     ; collatz(R0)
+  LDR R0, R6, #0  ; Load collatz(R0) into R0
+  ADD R6, R6, #2  ; Pop two spots on stack
+  ADD R0, R0, #1  ; R0 += 1
+  STR R0, R5, #0  ; answer = R0
+  BR TEAR         ; teardown
+
+IF3               ; isOdd case (R1 currently 1)
+  ADD R1, R1, R0  ; R1 += R0
+  ADD R1, R1, R0  ; R1 += R0
+  ADD R1, R1, R0  ; R1 += R0
+  AND R0, R0, #0  ; R0 = 0
+  ADD R0, R0, R1  ; R0 = 3 * N + 1
+  BR FINAL        ; Finish off condition
+
+
+; stack teardown (always the same)
+TEAR
+  LDR R0, R5, 0   ; Ret val = answer
+  STR R0, R5, 3
+  LDR R4, R5, -5  ; Restore R4
+  LDR R3, R5, -4  ; Restore R3
+  LDR R2, R5, -3  ; Restore R2
+  LDR R1, R5, -2  ; Restore R0
+  LDR R0, R5, -1  ; Restore R1
+  ADD R6, R5, 0   ; Restore SP
+  LDR R5, R6, 1   ; Restore FP
+  LDR R7, R6, 2   ; Restore RA
+  ADD R6, R6, 3   ; Pop ra,fp,lv1
 
 RET
+
 
 ;; The following is a subroutine that takes a single number n and returns n/2.
 ;; You may call this subroutine to help you with 'collatz'.
