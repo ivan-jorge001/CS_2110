@@ -1,13 +1,15 @@
 /**
  * @file hw7.c
- * @author YOUR NAME HERE
+ * @author Andrew Friedman
  * @brief structs, pointers, pointer arithmetic, arrays, strings, and macros
- * @date 2021-10-xx
+ * @date 11/03/2021
  */
 
 // DO NOT MODIFY THE INCLUDE(S) LIST
 #include <stdio.h>
+
 #include "hw7.h"
+
 #include "my_string.h"
 
 // Global array of pokemon structs
@@ -23,8 +25,8 @@ int size = 0;
  * @param "nickname" nickname of the pokemon being created and added
  *               NOTE: if the length of the nickname (including the null terminating character)
  *               is above MAX_NICKNAME_SIZE, truncate nickname to MAX_NICKNAME_SIZE. If the length
- *               is below MIN_NICKNAME_SIZE, return FAILURE.  
- *               
+ *               is below MIN_NICKNAME_SIZE, return FAILURE.
+ *
  * @param "pokedexNumber" pokedexNumber of the pokemon being created and added
  * @param "powerLevel" power level of the pokemon being created and added
  * @param "speciesName" species name of the pokemon being created and added
@@ -35,20 +37,35 @@ int size = 0;
  *         (3) adding the new pokemon would cause the size of the array "pokedex" to
  *             exceed MAX_POKEDEX_SIZE
  */
-int catchPokemon(const char *nickname, int pokedexNumber, double powerLevel, const char *speciesName)
-{
-   /* Note about UNUSED_PARAM
-   *
-   * UNUSED_PARAM is used to avoid compiler warnings and errors regarding unused function
-   * parameters prior to implementing the function. Once you begin implementing this
-   * function, you can delete the UNUSED_PARAM lines.
-   */
-  UNUSED_PARAM(nickname);
-  UNUSED_PARAM(pokedexNumber);
-  UNUSED_PARAM(powerLevel);
-  UNUSED_PARAM(speciesName);
+int catchPokemon(const char * nickname, int pokedexNumber, double powerLevel, const char * speciesName) {
+    long unsigned int nickL = my_strlen(nickname);
+    if (nickL < MIN_NICKNAME_SIZE) {
+        return FAILURE;
+    }
+    if (nickL > MAX_NICKNAME_SIZE) {
+        nickL = MAX_NICKNAME_SIZE - 1;
+    }
 
-  return SUCCESS;
+    if (my_strlen(speciesName) < MIN_SPECIESNAME_SIZE) {
+        return FAILURE;
+    }
+
+    int i = 0;
+    if (size >= MAX_POKEDEX_SIZE) {
+        return FAILURE;
+    } else {
+        for (; i < size; i++) {
+            if (my_strlen(pokedex[i].nickname) == nickL
+                && my_strncmp(pokedex[i].nickname, nickname, nickL) == 0) {
+                return FAILURE;
+            }
+        }
+        my_strncpy(pokedex[size].nickname, nickname, MAX_NICKNAME_SIZE - 1);
+        pokedex[size].pokedexNumber = pokedexNumber;
+        pokedex[size].powerLevel = powerLevel;
+        my_strncpy(pokedex[size++].speciesName, speciesName, MAX_SPECIESNAME_SIZE - 1);
+    }
+    return SUCCESS;
 }
 
 /** updatePokemonNickname
@@ -63,12 +80,21 @@ int catchPokemon(const char *nickname, int pokedexNumber, double powerLevel, con
  *         Failure if any of the following are true:
  *         (1) the pokemon struct "s" can not be found in the array "pokedex"
  */
-int updatePokemonNickname(struct pokemon s, const char *nickname)
-{
-  UNUSED_PARAM(s);
-  UNUSED_PARAM(nickname);
-
-  return FAILURE;
+int updatePokemonNickname(struct pokemon s, const char * nickname) {
+    long unsigned int nickL = my_strlen(nickname);
+    if (nickL < MIN_NICKNAME_SIZE) {
+        return FAILURE;
+    }
+    if (nickL > MAX_NICKNAME_SIZE) {
+        nickL = MAX_NICKNAME_SIZE - 1;
+    }
+    for (int i = 0; i < size; i++) {
+        if (my_strncmp(pokedex[i].nickname, s.nickname, my_strlen(s.nickname)) == 0) {
+            my_strncpy(pokedex[i].nickname, nickname, MAX_NICKNAME_SIZE - 1);
+            return SUCCESS;
+        }
+    }
+    return FAILURE;
 }
 
 /** swapPokemon
@@ -82,12 +108,14 @@ int updatePokemonNickname(struct pokemon s, const char *nickname)
  *         (1) "index1" and/or "index2" are negative numbers
  *         (2) "index1" and/or "index2" are out of bounds of the array "pokedex"
  */
-int swapPokemon(int index1, int index2)
-{
-  UNUSED_PARAM(index1);
-  UNUSED_PARAM(index2);
-
-  return SUCCESS;
+int swapPokemon(int index1, int index2) {
+    if (index1 >= size || index2 >= size || index1 < 0 || index2 < 0) {
+        return FAILURE;
+    }
+    struct pokemon temp = pokedex[index1];
+    pokedex[index1] = pokedex[index2];
+    pokedex[index2] = temp;
+    return SUCCESS;
 }
 
 /** releasePokemon
@@ -99,11 +127,18 @@ int swapPokemon(int index1, int index2)
  *         Failure if any of the following are true:
  *         (1) the pokemon struct "s" can not be found in the array "pokedex"
  */
-int releasePokemon(struct pokemon s)
-{
-  UNUSED_PARAM(s);
-
-  return SUCCESS;
+int releasePokemon(struct pokemon s) {
+    for (int i = 0; i < size; i++) {
+        if (my_strlen(pokedex[i].nickname) == my_strlen(s.nickname)
+            && my_strncmp(pokedex[i].nickname, s.nickname, my_strlen(s.nickname)) == 0) {
+            for (; i < size; i++) {
+                pokedex[i] = pokedex[i + 1];
+            }
+            size--;
+            return SUCCESS;
+        }
+    }
+    return FAILURE;
 }
 
 /** comparePokemon
@@ -115,13 +150,15 @@ int releasePokemon(struct pokemon s)
  * @return negative number if s1 is less than s2, positive number if s1 is greater
  *         than s2, and 0 if s1 is equal to s2
  */
-int comparePokemon(struct pokemon s1, struct pokemon s2)
-{
-  UNUSED_PARAM(s1);
-  UNUSED_PARAM(s2);
-
-  return SUCCESS;
-
+int comparePokemon(struct pokemon s1, struct pokemon s2) {
+    if (s1.pokedexNumber == s2.pokedexNumber) {
+        long unsigned int bigNick = my_strlen(s1.nickname);
+        if (bigNick < my_strlen(s2.nickname)) {
+            bigNick = my_strlen(s2.nickname);
+        }
+        return my_strncmp(s1.nickname, s2.nickname, bigNick);
+    }
+    return s1.pokedexNumber - s2.pokedexNumber;
 }
 
 /** sortPokemon
@@ -132,6 +169,12 @@ int comparePokemon(struct pokemon s1, struct pokemon s2)
  * @param void
  * @return void
  */
-void sortPokemon(void)
-{
+void sortPokemon(void) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 1 + i; j < size; j++) {
+            if (comparePokemon(pokedex[i], pokedex[j]) > 0) {
+                swapPokemon(i, j);
+            }
+        }
+    }
 }
