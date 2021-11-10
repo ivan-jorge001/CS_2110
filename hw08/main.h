@@ -4,7 +4,10 @@
 #include "gba.h"
 
 // TODO: Create any necessary structs
-
+struct dinosaur {
+  int offsetX; // init 0
+  int offsetY; // init 0
+};
 /*
 * For example, for a Snake game, one could be:
 *
