@@ -3,28 +3,26 @@
 
 #include "gba.h"
 
-// TODO: Create any necessary structs
-struct dinosaur {
-  int offsetX; // init 0
-  int offsetY; // init 0
-};
-/*
-* For example, for a Snake game, one could be:
-*
-* struct snake {
-*   int heading;
-*   int length;
-*   int row;
-*   int col;
-* };
-*
-* Example of a struct to hold state machine data:
-*
-* struct state {
-*   int currentState;
-*   int nextState;
-* };
-*
-*/
+typedef struct snake {
+  int body[256][2]; // 16 x 16 grid
+  int length;
+  int direction[2];
+} Snake;
+
+typedef struct food {
+  int x;
+  int y;
+} Food;
+
+typedef struct prevDirection {
+  int x;
+  int y;
+} PrevDirection;
+
+void snakeMain(void);
+void drawWholeSnake(void);
+void increaseSnake(int);
+void generateFood(void);
+void printScore(void);
 
 #endif
