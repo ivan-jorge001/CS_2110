@@ -51,8 +51,8 @@ int main(void) {
         drawRectDMA(0,40,WIDTH - 80, HEIGHT, GREEN); // playable area
         drawRectDMA(0, 200, 40, 10, BLACK); // score background
         drawString(0, 200, "score:", WHITE);
-        printScore();
         player.length = 1;
+        printScore();
         player.body[0][0] = 0;
         player.body[0][1] = 0;
         player.direction[0] = 1;
