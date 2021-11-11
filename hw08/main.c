@@ -1,7 +1,6 @@
 #include "main.h"
 
 #include <stdio.h>
-#define atoa(x) #x
 #include <stdlib.h>
 
 #include "gba.h"
