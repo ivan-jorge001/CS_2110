@@ -1,0 +1,14 @@
+﻿Address,PC,Label,Instruction/Value
+x3000,x3001,,"LEA R0, A"
+x3001,x3002,,"LD R1, A"
+x3002,x3003,,"LDI R2, A"
+x3003,x3004,,"LDR R3, R0, 1"
+x3004,x3005,,"LDR R4, R1, -1"
+x3005,x3006,,HALT
+x3006,x3007,"April 1, 2022",A .fill x4002  = x4002
+x3007,x3008,,B .fill x4001 = x4001
+x3008,x3009,,
+…..,,,
+x4000,x4001,,1
+x4001,x4002,,2
+x4002,x4003,,3
