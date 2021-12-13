@@ -2,7 +2,7 @@
 ;; CS 2110 - Fall 2021
 ;; Final Exam - Set Pixel
 ;;=============================================================
-;; Name:
+;; Name: Andrew Friedman
 ;;=============================================================
 
 ;; Pseudocode (see PDF for additional information)
@@ -16,36 +16,26 @@
 
 .orig x3000
 
-;; offset = 0;
-ADD R0, R0, 0
+AND R0, R0, #0 ; offset = 0;
+AND R1, R1, #0 ; i = 0
+FOR
+LD R2, ROW ; R2 = ROW
+NOT R2, R2
+ADD R2, R2, #1
+ADD R2, R2, R1
+BRZP ENDFOR
+LD R3, WIDTH
+ADD R0, R0, R3 ;		offset += WIDTH;
+ADD R1, R1, #1 ; i++
+BR FOR
 
-
-;;while(ROW > 0) {
-;;  offset+=width;
-;;  row--;
-;;}
-LD R2, WIDTH
-LD R1, ROW
-WHILE
-  ADD R0, R0, R2
-  ADD R1, R1, #-1
-  BRnz ENDWHILE
-
-  BR WHILE
-ENDWHILE
-
-
-;; offset += COL;
+ENDFOR
 LD R3, COL
-ADD R0, R0, R3
-AND R3, R3, 0
-
-;; VIDEOBUFFER[offset] = COLOR
-
-LD R3, VIDEOBUFFER
-ADD R3, R3, R0
-LD R4, COLOR
-STR R4, R3, #0
+ADD R0, R0, R3 ; offset += COL;
+LD R3, COLOR
+LD R4, VIDEOBUFFER
+ADD R4, R4, R0
+STR R3, R4, #0          ; mem[R4] = R3
 
 
 
