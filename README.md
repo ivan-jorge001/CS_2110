@@ -1,4 +1,4 @@
-# Georgia Tech's CS 2110 - Computer Organization and Programming
+# Georgia Tech's CS 2110 - Computer Organization and Programming (Fall 2021)
 ## Course Description
 An introduction to basic computer hardware, machine language, assembly language, and C programming. 
 ## Course Purpose
