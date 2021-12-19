@@ -20,7 +20,7 @@ language as well as interaction with hardware.
 - (Competency Synthesis) Be able to utilize (in C programs) proper typing and casting constructs, structs, pointers and arrays, functions, function pointers, dynamic memory allocation and variables of different storage classes (auto, static, volatile, etc.)
 ## Table of Contents
 ### Notes
-These notes were originally create in the website Notion and then converted to HTML. It is not necissarily a 1:1 conversion but the material should still be preserved. The notes are available [here](https://fried-man-education.github.io/CS_2110/).
+These notes were originally created on [Notion.so](https://www.notion.so) and then converted to HTML. It is not a perfect conversion but the material is still preserved. The notes are available [here](https://fried-man-education.github.io/CS_2110/).
 ### Homework
 - Homework 01 - [Bases and Bitwise Operations](https://github.com/Fried-man-Education/CS_2110/tree/main/Homework%2001)
 - Homework 02 - [Digital Logic and the ALU](https://github.com/Fried-man-Education/CS_2110/tree/main/Homework%2002)
